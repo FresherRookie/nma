@@ -17,7 +17,7 @@ export default function Footer() {
           <h2 className="text-xl font-bold mb-4">Quick Links</h2>
           <ul>
             <li>
-              <a href="#about" className="hover:underline">
+              <a href="/about" className="hover:underline">
                 About Us
               </a>
             </li>
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-8 text-center">
-        <p>&copy; 2024 Music Academy. All rights reserved.</p>
+        <p>&copy; 2024 North Music Academy. All rights reserved.</p>
       </div>
     </footer>
   );

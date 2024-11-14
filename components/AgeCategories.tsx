@@ -8,7 +8,7 @@ const playfair = Playfair_Display({
 export default function AgeCategories() {
   return (
     <div className="flex flex-col md:flex-row w-full items-center justify-around mt-4 pt-4">
-      <div className="relative w-full md:max-w-[50vw] h-screen">
+      <div className="relative w-full md:max-w-[50vw] h-[70vh]">
         <Image src="/Guitar.jpg" fill={true} alt="Guitar" />
 
         <div className="bg-white bg-opacity-30 absolute bottom-0 w-full p-4">

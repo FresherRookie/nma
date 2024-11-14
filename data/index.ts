@@ -18,3 +18,37 @@ export const navItems = [
 ];
 
 export const heroItems = [{ Image: '/HeroImage.jpg' }];
+
+interface TeamMember {
+  name: string;
+  role: string;
+  imageSrc: string;
+  bio: string;
+}
+export const teamMembers: TeamMember[] = [
+  {
+    name: 'K.C Angami',
+    role: 'Instructor',
+    imageSrc: '/womanpiano.jpg',
+    bio: 'From beginners to advanced lesson, I will take you through.',
+  },
+  {
+    name: 'John',
+    role: 'Instructor',
+    imageSrc: '/handsguitar.jpg',
+    bio: 'Intermediate and advanced guitar instructor',
+  },
+  {
+    name: 'Grace',
+    role: 'Instructor',
+    imageSrc: '/womanviolin.jpg',
+    bio: 'Intermediate and advanced violin instructor',
+  },
+  {
+    name: 'Rocky',
+    role: 'Instructor',
+    imageSrc: '/drums.jpg',
+    bio: 'Beginner, Intermediate and advanced drums instructor',
+  },
+  // Add more team members here
+];
