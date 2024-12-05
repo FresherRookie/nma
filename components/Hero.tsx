@@ -1,5 +1,5 @@
 import React from 'react';
-import { Playfair_Display } from '@next/font/google';
+import { Playfair_Display } from "next/font/google";
 import Link from 'next/link';
 const playfair = Playfair_Display({
   subsets: ['latin'],

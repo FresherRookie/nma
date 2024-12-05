@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Playfair_Display } from '@next/font/google';
+import { Playfair_Display } from 'next/font/google';
 const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -14,7 +14,7 @@ export default function AboutIntro() {
         <Image
           src="/piano_rose.jpg"
           alt="violin"
-          layout="fill"
+          fill
           className="object-cover"
         />
         <div className="absolute font-light bg-gray-900 bg-opacity-50  w-full h-full flex items-center justify-center">

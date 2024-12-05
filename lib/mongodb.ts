@@ -12,7 +12,7 @@ if (!cached) {
 }
 
 async function connectToDatabase(databaseName: string) {
-  if (cached.conn && cached.conn.connectiions[0].name !== databaseName) {
+  if (cached.conn && cached.conn.connections[0].name !== databaseName) {
     await mongoose.disconnect();
     cached = { conn: null, promise: null };
   }
@@ -23,8 +23,6 @@ async function connectToDatabase(databaseName: string) {
   }
   if (!cached.promise) {
     const opts = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       bufferCommands: false,
       dbName: databaseName,
     };

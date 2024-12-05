@@ -1,6 +1,7 @@
 import React from 'react';
 import { topContactItems, topSocialList } from '@/data';
 import { MdEmail } from 'react-icons/md';
+import AuthButtons from './AuthButtons';
 import {
   FaFacebook,
   FaInstagram,
@@ -58,6 +59,9 @@ const TopContactBar = () => {
               </li>
             ))}
           </ul>
+        </div>
+        <div>
+          <AuthButtons />
         </div>
       </div>
     </div>

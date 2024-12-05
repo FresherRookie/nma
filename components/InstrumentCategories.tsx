@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Playfair_Display } from '@next/font/google';
+import { Playfair_Display } from "next/font/google";
 import { GiDrumKit, GiGrandPiano, GiGuitar, GiViolin } from 'react-icons/gi';
 import { PiMicrophoneStageFill } from 'react-icons/pi';
 const playfair = Playfair_Display({

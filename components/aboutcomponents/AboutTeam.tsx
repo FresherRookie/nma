@@ -11,7 +11,7 @@ export default function AboutTeam() {
             <Image
               src="/womanpiano.jpg"
               alt="Team Member Name"
-              layout="fill"
+              fill
               className="object-cover"
             />
           </div>
@@ -27,7 +27,7 @@ export default function AboutTeam() {
             <Image
               src="/handsguitar.jpg"
               alt="Team Member Name"
-              layout="fill"
+              fill
               className="object-cover"
             />
           </div>
@@ -43,7 +43,7 @@ export default function AboutTeam() {
             <Image
               src="/womanviolin.jpg"
               alt="Team Member Name"
-              layout="fill"
+              fill
               className="object-cover"
             />
           </div>

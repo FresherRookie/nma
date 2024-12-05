@@ -10,7 +10,7 @@ export const topSocialList = [
 
 export const navItems = [
   { name: 'Home', link: '/' },
-  { name: 'Services', link: '/services' },
+  { name: 'Courses', link: '/courses' },
   { name: 'Faculties', link: '/faculties' },
   { name: 'News', link: '/news' },
   { name: 'About Us', link: '/about' },

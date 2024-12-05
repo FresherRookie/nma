@@ -3,6 +3,12 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SessionProviderWrapper from '@/components/SessionProviderWrapper';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] });
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,11 +34,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <SessionProviderWrapper>
+          <Header />
+          <main className={` flex-grow ${roboto.className}`}>{children}</main>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          <Footer />
+        </SessionProviderWrapper>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Playfair_Display } from '@next/font/google';
+import { Playfair_Display } from 'next/font/google';
 const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -73,7 +73,7 @@ export default function AboutHistory() {
           <Image
             src="/doorway3.jpg"
             alt="doorway"
-            layout="fill"
+            fill
             className="object-cover"
           />
           <div className="absolute bottom-0 w-full h-20 flex items-center justify-center bg-gray-400 bg-opacity-50">

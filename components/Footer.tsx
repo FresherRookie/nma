@@ -4,7 +4,7 @@ import { IoLogoFacebook } from 'react-icons/io';
 
 export default function Footer() {
   return (
-    <footer className="bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] text-white py-8 px-4">
+    <footer className="bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] text-white py-8 px-4 mt-auto">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h2 className="text-xl font-bold mb-4">North Music Academy</h2>

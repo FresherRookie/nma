@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Playfair_Display } from '@next/font/google';
+import { Playfair_Display } from "next/font/google";
 import {
   FaFacebook,
   FaInstagram,

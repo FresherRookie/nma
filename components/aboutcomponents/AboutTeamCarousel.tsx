@@ -39,7 +39,7 @@ const AboutTeamCarousel: FC = () => {
               <Image
                 src={member.imageSrc}
                 alt={member.name}
-                layout="fill"
+                fill
                 className="object-cover rounded-t-lg"
               />
             </div>
