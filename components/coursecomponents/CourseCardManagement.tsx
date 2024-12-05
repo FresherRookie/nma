@@ -1,7 +1,6 @@
-import Link from 'next/link';
 import React from 'react';
 import { CiEdit } from 'react-icons/ci';
-import { MdArrowOutward, MdOutlineFormatAlignLeft } from 'react-icons/md';
+
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { BackgroundGradient } from '../ui/BackgroundGradient';
 
@@ -25,15 +24,15 @@ const Card: React.FC<CardProps> = ({
   createdDate,
   sessionsPerWeek,
   grade,
-  id,
+
   backgroundColor,
   onEdit,
   onDelete,
 }) => {
   return (
-    <div className="max-w-md rounded-lg overflow-hidden shadow-lg m-4">
+    <div className="max-w-md rounded-lg overflow-hidden  m-4">
       <BackgroundGradient backgroundColor={backgroundColor}>
-        <div className="p-6 bg-white rounded-lg relative">
+        <div className="p-6  rounded-lg relative">
           <h2 className="font-bold text-2xl mb-3 text-center text-indigo-600">
             {name}
           </h2>
@@ -61,11 +60,7 @@ const Card: React.FC<CardProps> = ({
             >
               <CiEdit className="mr-1" /> Edit
             </button>
-            <Link href="/admission/apply">
-              <a className="inline-flex items-center px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
-                Apply for Course <MdArrowOutward className="ml-1" />
-              </a>
-            </Link>
+
             <button
               onClick={onDelete}
               className="flex items-center justify-center px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700 transition-colors"

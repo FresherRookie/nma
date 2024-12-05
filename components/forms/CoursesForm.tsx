@@ -41,7 +41,7 @@ export default function CourseForm({ onSubmit, initialData }: courseFormProps) {
 
     setValue,
 
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<TCourseData>({
     resolver: zodResolver(courseSchema),
     defaultValues: initialData || {
@@ -82,12 +82,12 @@ export default function CourseForm({ onSubmit, initialData }: courseFormProps) {
     onSubmit(data); // Pass the data to the parent's onSubmit handler
   };
 
-  const renderErrorMessage = (error: any) => {
-    if (error && typeof error.message === 'string') {
-      return <span>{error.message}</span>;
-    }
-    return null;
-  };
+  // const renderErrorMessage = (error: any) => {
+  //   if (error && typeof error.message === 'string') {
+  //     return <span>{error.message}</span>;
+  //   }
+  //   return null;
+  // };
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">

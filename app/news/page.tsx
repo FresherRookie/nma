@@ -2,6 +2,7 @@
 import { formatDate } from '@/helpers/helpers';
 import React, { useEffect, useState } from 'react';
 import NewsCard from '@/components/newscomponents/NewsCard';
+import Loading from '@/components/ui/Loading';
 type NewsPosts = {
   _id: string;
   title: string;
@@ -29,6 +30,8 @@ export default function News() {
     };
     fetchPosts();
   }, []);
+
+  if (loading) <Loading />;
   return (
     <div className="flex flex-col items-center justify-center m-auto">
       <h1>News</h1>

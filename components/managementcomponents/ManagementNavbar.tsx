@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 const ManagementNavbar = () => {
   const { data: session } = useSession();
-  const role = session?.user.role;
 
   return (
     <nav className="bg-gray-800 p-4 flex flex-row items-center justify-center flex-wrap">
@@ -43,7 +42,7 @@ const ManagementNavbar = () => {
 
         {session && (
           <>
-            {['admin'].includes(session?.user.role) && (
+            {['admin'].includes(session?.user?.role ?? '') && (
               <li>
                 <Link href="/management/users">
                   <span className="text-white hover:text-gray-300">Users</span>

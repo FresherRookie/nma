@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import NewsPostForm from '@/models/NewsPost';
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     await connectToDatabase(process.env.DB_NAME as string);
     const posts = await NewsPostForm.find().sort({ createdDate: -1 });

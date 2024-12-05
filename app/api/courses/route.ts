@@ -3,7 +3,7 @@ import { getToken } from 'next-auth/jwt';
 import connectToDatabase from '@/lib/mongodb';
 import Course from '@/models/Course';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   await connectToDatabase(process.env.DB_NAME as string);
   const courses = await Course.find({}).populate('instrument');
   return NextResponse.json(courses, { status: 200 });

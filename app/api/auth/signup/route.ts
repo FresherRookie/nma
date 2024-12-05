@@ -10,7 +10,7 @@ import { signUpSchema } from '@/schemas/signup';
 import VerificationEmail from '../../../../emails/VerificationEmail';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const requestBody = await req.json();
   const headers = req.headers;
   const host = headers.get('host');
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       { message: 'User created successfully.' },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error during Signup', error);
     if (error instanceof z.ZodError) {
       return NextResponse.json(

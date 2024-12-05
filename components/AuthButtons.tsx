@@ -11,12 +11,13 @@ const AuthButtons = () => {
     router.push('/');
   };
   return (
-    <div>
+    <div className="flex flex-row gap-2 text-white-ivory">
       {session ? (
         <>
-          {['admin', 'manager'].includes(session.user.role) && (
-            <a href="/management">Management</a>
-          )}
+          {session.user &&
+            ['admin', 'manager'].includes(session.user.role ?? '') && (
+              <a href="/management">Management</a>
+            )}
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (

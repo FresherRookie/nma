@@ -38,7 +38,11 @@ export default function RootLayout({
       >
         <SessionProviderWrapper>
           <Header />
-          <main className={` flex-grow ${roboto.className}`}>{children}</main>
+          <main
+            className={` flex flex-grow justify-center ${roboto.className}`}
+          >
+            {children}
+          </main>
 
           <ToastContainer
             position="top-right"

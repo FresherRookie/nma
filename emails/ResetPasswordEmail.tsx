@@ -7,7 +7,6 @@ import {
   Row,
   Section,
   Text,
-  Button,
   Link,
 } from '@react-email/components';
 

@@ -1,22 +1,21 @@
-import NextAuth, { AuthOptions, SessionStrategy } from 'next-auth';
+import { NextAuthOptions, SessionStrategy } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { userSchema } from '@/schemas/user';
 import connectToDatabase from '@/lib/mongodb';
 import User from '@/models/user';
-import { JWT } from 'next-auth/jwt';
+const defaultUser = { id: '', role: '', name: '', email: '', image: '' };
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
         email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         try {
           await connectToDatabase(process.env.DB_NAME as string);
-          console.log(credentials?.password);
           const user = await User.findOne({ email: credentials?.email });
           if (!user) {
             throw new Error('Invalid email');
@@ -27,7 +26,6 @@ export const authOptions: AuthOptions = {
             plainTextPassword,
             user.password
           );
-          console.log('Comparison result:', isValid);
           if (!isValid) {
             throw new Error('Incorrect password');
           }
@@ -53,14 +51,18 @@ export const authOptions: AuthOptions = {
     strategy: 'jwt' as SessionStrategy,
   },
   callbacks: {
-    async session({ session, token }: { session: any; token: JWT }) {
+    async session({ session, token }) {
+      if (!session.user) {
+        session.user = { ...defaultUser };
+      }
+
       if (token) {
-        session.user.role = token.role;
-        session.user.id = token.id;
+        session.user.role = token.role ?? '';
+        session.user.id = token.id ?? '';
       }
       return session;
     },
-    async jwt({ token, user }: { token: JWT; user: any }) {
+    async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
         token.id = user.id;
@@ -76,6 +78,3 @@ export const authOptions: AuthOptions = {
     newUser: undefined, // If set, new users will be directed here on first sign in (leave null to disable)
   },
 };
-
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };

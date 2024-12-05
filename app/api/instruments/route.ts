@@ -3,7 +3,7 @@ import { getToken } from 'next-auth/jwt';
 import connectToDatabase from '@/lib/mongodb';
 import Instrument from '@/models/Instrument';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   await connectToDatabase(process.env.DB_NAME as string);
   const instruments = await Instrument.find({});
   return NextResponse.json(instruments, { status: 200 });

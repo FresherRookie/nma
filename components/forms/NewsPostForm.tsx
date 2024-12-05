@@ -92,11 +92,13 @@ export default function NewsPostForm({
     onSubmit(data); // Pass the data to the parent's onSubmit handler
   };
 
-  const renderErrorMessage = (error: any) => {
-    if (error && typeof error.message === 'string') {
-      return <span>{error.message}</span>;
+  const renderErrorMessage = (error: unknown) => {
+    if (error instanceof Error) {
+      if (error && typeof error.message === 'string') {
+        return <span>{error.message}</span>;
+      }
+      return null;
     }
-    return null;
   };
 
   return (

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
+
 import { toast } from 'react-toastify';
 import Loading from '@/components/ui/Loading';
 
@@ -11,7 +11,6 @@ type Instrument = {
 };
 
 const AdminInstruments: React.FC = () => {
-  const { data: session } = useSession();
   const [instruments, setInstruments] = useState<Instrument[]>([]);
   const [newInstrument, setNewInstrument] = useState('');
   const [description, setDescription] = useState('');

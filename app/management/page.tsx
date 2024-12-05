@@ -1,11 +1,15 @@
 import { getServerSession } from 'next-auth/next';
-import { redirect } from 'next/navigation';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+
+import { authOptions } from '@/lib/auth';
 
 export default async function Management() {
   const session = await getServerSession(authOptions);
 
-  if (!session || !['admin', 'manager'].includes(session.user.role)) {
+  if (
+    !session ||
+    !session.user ||
+    !['admin', 'manager'].includes(session.user.role ?? '')
+  ) {
     return <div>Access denied</div>;
   }
 

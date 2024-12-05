@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+
 import Loading from '@/components/ui/Loading';
 import CourseCardVisitor from '@/components/coursecomponents/CourseCardVisitor';
 

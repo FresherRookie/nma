@@ -1,10 +1,7 @@
-import { contactFormSchema } from '@/schemas/contactForm';
-
 import { NextResponse, NextRequest } from 'next/server';
 
 import connectToDatabase from '@/lib/mongodb';
 import ContactForm from '@/models/ContactFormSchema';
-import mongoose from 'mongoose';
 
 export async function POST(req: NextRequest) {
   // const body: unknown = await req.json();

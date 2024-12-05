@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { MdArrowOutward, MdOutlineFormatAlignLeft } from 'react-icons/md';
+import { MdArrowOutward } from 'react-icons/md';
 
 import { BackgroundGradient } from '../ui/BackgroundGradient';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { CiEdit } from 'react-icons/ci';
 
 type CardProps = {
   name: string;

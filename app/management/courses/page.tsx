@@ -3,26 +3,13 @@ import React, { useEffect, useState } from 'react';
 
 import { SubmitHandler } from 'react-hook-form';
 
-import * as z from 'zod';
 import { useSession } from 'next-auth/react';
 import CourseCardManagement from '@/components/coursecomponents/CourseCardManagement';
 import { toast } from 'react-toastify';
 import Modal from '@/components/Modal';
 import CourseForm from '@/components/forms/CoursesForm';
 import Loading from '@/components/ui/Loading';
-import Instrument from '@/models/Instrument';
-
-const courseSubmissionSchema = z.object({
-  name: z.string().min(1, 'Course name is required'),
-  createdDate: z.date(),
-  instrument: z.string().min(1, 'Instrument is required'),
-  sessionsPerWeek: z.number().min(1, 'At least 1 session per week is required'),
-  grade: z.string().min(1, 'Grade is required'),
-  description: z.string().optional(),
-  userId: z.string().min(1, 'Creator ID is required'),
-  backgroundColor: z.string().optional(),
-});
-type TCourseSubmissionSchema = z.infer<typeof courseSubmissionSchema>;
+import type { TCourseSubmissionSchema } from '@/schemas/courseSubmission';
 
 type Course = {
   _id: string;

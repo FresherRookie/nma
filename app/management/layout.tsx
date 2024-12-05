@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ManagementNavbar from '../../components/managementcomponents/ManagementNavbar';
 export default function ManagementLayout({
   children,
@@ -6,11 +5,9 @@ export default function ManagementLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="w-full">
       <ManagementNavbar />
       <div>{children}</div>
-
-      <div className="flex"></div>
-    </>
+    </div>
   );
 }

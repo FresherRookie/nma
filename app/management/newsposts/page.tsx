@@ -6,22 +6,10 @@ import NewsPostForm from '@/components/forms/NewsPostForm';
 import { formatDate } from '@/helpers/helpers';
 import { toast } from 'react-toastify';
 import Card from '@/components/ui/NewsPostCard';
-import { z } from 'zod';
+
 import { useEffect, useState } from 'react';
 import Loading from '@/components/ui/Loading';
-
-const newsSubmissionSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  content: z.string().min(1, 'Content is required'),
-  createdDate: z.date(),
-  userId: z.string().min(1, 'Creator ID is required'),
-  image: z
-    .instanceof(File)
-    .refine((file) => file.size <= 5 * 1024 * 1024, 'Max image size is 5MB')
-    .optional(),
-  imgUrl: z.string().optional(),
-});
-type TnewsSubmissionSchema = z.infer<typeof newsSubmissionSchema>;
+import type { TnewsSubmissionSchema } from '@/schemas/newNewsPostSchema';
 
 type NewsPosts = {
   _id: string;

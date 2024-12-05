@@ -5,12 +5,6 @@ import { getToken } from 'next-auth/jwt';
 import connectToDatabase from '@/lib/mongodb';
 import NewsPostForm from '@/models/NewsPost';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 type TNewsPostDatabaseData = {
   title: string;
   content: string;
@@ -170,6 +164,7 @@ export const DELETE = async (req: NextRequest) => {
       { status: 200 }
     );
   } catch (error) {
+    console.error('Error', error);
     return NextResponse.json(
       { message: 'Failed to delete post' },
       { status: 500 }

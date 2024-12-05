@@ -11,14 +11,13 @@ import { signIn } from 'next-auth/react';
 
 type SigninFormInputs = z.infer<typeof signInSchema>;
 
-export default function page() {
+export default function SignIn() {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
-    getValues,
+
     setError,
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
@@ -41,12 +40,20 @@ export default function page() {
       } else {
         router.push(result?.url || '/');
       }
-    } catch (error: any) {
-      console.log('Submission error:', error.message);
-      setError('root', {
-        type: 'manual',
-        message: error.message,
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log('Submission error:', error?.message);
+        setError('root', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else {
+        console.log('Unknown Error:', error);
+        setError('root', {
+          type: 'manual',
+          message: 'An Unknown Error occured',
+        });
+      }
     }
   };
 

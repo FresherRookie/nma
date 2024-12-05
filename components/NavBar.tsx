@@ -4,7 +4,7 @@ import { navItems } from '@/data';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { PlaceholdersAndVanishInput } from './ui/PlaceholderAndVanishInput';
+
 import { FaSearch } from 'react-icons/fa';
 
 const NavBar = () => {
@@ -15,19 +15,19 @@ const NavBar = () => {
   const toggleMenu = () => {
     setMenuToggle(!menuToggle);
   };
-  const HandleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submitted');
-    //handle the searchfunction here.
-  };
+  // const HandleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log(e.target.value);
+  // };
+  // const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   console.log('submitted');
+  //   //handle the searchfunction here.
+  // };
   const searchToggle = () => {
     setToggleSearch(!toggleSearch);
   };
 
-  const placeholders = ['Search'];
+  // const placeholders = ['Search'];
   return (
     <div>
       <nav className="flex flex-row items-center justify-around my-4 sm:m-auto">
@@ -75,13 +75,7 @@ const NavBar = () => {
             <FaSearch onClick={searchToggle} />
           </div>
         </div>
-        <div className="hidden sm:flex">
-          <PlaceholdersAndVanishInput
-            onChange={HandleSearch}
-            onSubmit={onSubmit}
-            placeholders={placeholders}
-          />
-        </div>
+        <div className="hidden sm:flex"></div>
       </nav>
 
       <div
@@ -136,13 +130,7 @@ const NavBar = () => {
             >
               ✕
             </button>
-            <div>
-              <PlaceholdersAndVanishInput
-                onChange={HandleSearch}
-                onSubmit={onSubmit}
-                placeholders={placeholders}
-              />
-            </div>
+            <div></div>
           </div>
         </div>
       </div>

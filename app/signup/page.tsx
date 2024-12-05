@@ -9,14 +9,14 @@ import { z } from 'zod';
 
 type SignupFormInputs = z.infer<typeof signUpSchema>;
 
-export default function page() {
+export default function SignUp() {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    getValues,
+
     setError,
   } = useForm<TSignUpSchema>({
     resolver: zodResolver(signUpSchema),
@@ -41,21 +41,29 @@ export default function page() {
       }
       router.push('/signin');
       reset();
-    } catch (error: any) {
-      console.log('Submission error:', error.message);
-      setError('root', {
-        type: 'manual',
-        message: error.message,
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log('Submission error:', error.message);
+        setError('root', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else {
+        console.log('Unknown Error:', error);
+        setError('root', {
+          type: 'manual',
+          message: 'An Unknown Error Occured',
+        });
+      }
     }
   };
 
   return (
-    <div className="flex item-center justify-center p-2 my-4">
+    <div className="flex item-center justify-center p-2 my-4 shadow-lg border-gray-700 max-w-lg">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <div>
-          <label>
-            <span>Name</span>
+        <div className="flex">
+          <label className="flex flex-row gap-2">
+            <span>Name:</span>
             <input
               {...register('name')}
               type="text"
@@ -66,7 +74,7 @@ export default function page() {
           </label>
         </div>
         <div>
-          <label>
+          <label className="flex flex-row gap-2">
             <span>email</span>
             <input
               {...register('email')}
@@ -78,7 +86,7 @@ export default function page() {
           </label>
         </div>
         <div>
-          <label>
+          <label className="flex flex-row gap-2">
             <span>Password </span>
             <input
               {...register('password')}
@@ -90,7 +98,7 @@ export default function page() {
           </label>
         </div>
         <div>
-          <label>
+          <label className="flex flex-row gap-2">
             <span>Confirm Password</span>
             <input
               {...register('confirmPassword')}
