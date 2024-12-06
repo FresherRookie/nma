@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
   // Set token and expiration
   user.resetPasswordToken = resetToken;
   user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-  user.tokenPurpose = 'reset';
 
   await user.save();
 
