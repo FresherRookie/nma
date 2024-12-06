@@ -1,6 +1,6 @@
 export const topContactItems = [
-  { contactType: 'email', address: 'thejasiliemetha93@gmail.com' },
-  { contactType: 'phone', address: '+918787515363' },
+  { contactType: 'email', address: 'management@northmusicacademy.in' },
+  { contactType: 'phone', address: '+919307288570' },
 ];
 export const topSocialList = [
   { platform: 'facebook', link: '/' },
