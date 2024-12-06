@@ -95,6 +95,12 @@ export default function SignIn() {
         </button>
       </form>
       {errors && <p>{errors.root?.message}</p>}
+      <button
+        onClick={() => router.push('/auth/forgot-password')}
+        className="mt-4 text-blue-500 underline hover:text-blue-600"
+      >
+        Forgot Password?
+      </button>
     </div>
   );
 }

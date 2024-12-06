@@ -1,55 +1,63 @@
+import React from 'react';
 import {
   Html,
   Head,
   Font,
-  Preview,
   Heading,
   Row,
   Section,
   Text,
   Link,
+  Tailwind,
 } from '@react-email/components';
 
-interface VerficationEmailProps {
-  verificationLink: string;
+interface VerificationEmailProps {
+  verificationUrl: string;
 }
-export default function VerificationEmail({
-  verificationLink,
-}: VerficationEmailProps) {
-  return (
-    <Html lang="en" dir="ltr">
-      <Head>
-        <title>Email Verification Link</title>
-        <Font
-          fontFamily="Roboto"
-          fallbackFontFamily="Verdana"
-          webFont={{
-            url: 'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
-            format: 'woff2',
-          }}
-          fontWeight={400}
-          fontStyle="normal"
-        />
-      </Head>
-      <Preview>Here&apos;s your reset email verification Link</Preview>
-      <Section>
-        <Row>
-          <Heading as="h2">Hello,</Heading>
+
+const VerificationEmail: React.FC<VerificationEmailProps> = ({
+  verificationUrl,
+}) => (
+  <Html lang="en" dir="ltr">
+    <Head>
+      <title>Email Verification Link</title>
+      <Font
+        fontFamily="Roboto"
+        fallbackFontFamily="Verdana"
+        webFont={{
+          url: 'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
+          format: 'woff2',
+        }}
+        fontWeight={400}
+        fontStyle="normal"
+      />
+    </Head>
+    <Tailwind>
+      <Section className="bg-gray-100 p-6 rounded-md shadow-md">
+        <Row className="mb-6">
+          <Heading as="h2" className="text-2xl font-bold text-gray-800">
+            Hello,
+          </Heading>
         </Row>
-        <Row>
-          <Text>
+        <Row className="mb-4">
+          <Text className="text-lg text-gray-700">
             Please use the following verification link to complete your
             verification:
           </Text>
-          <Link href={verificationLink}>Verify</Link>
         </Row>
-
+        <Row className="mb-6">
+          <Link href={verificationUrl} className="text-blue-500 underline">
+            Verify your email
+          </Link>
+        </Row>
         <Row>
-          <Text>
+          <Text className="text-sm text-gray-600">
             If you did not request this link, please ignore this email.
           </Text>
         </Row>
       </Section>
-    </Html>
-  );
-}
+    </Tailwind>
+  </Html>
+);
+
+export default VerificationEmail;

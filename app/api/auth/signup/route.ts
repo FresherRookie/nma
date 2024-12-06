@@ -3,13 +3,12 @@ import connectToDatabase from '../../../../lib/mongodb';
 import User from '@/models/user';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-import { Resend } from 'resend';
+
 import { z } from 'zod';
 import { signUpSchema } from '@/schemas/signup';
 
-import VerificationEmail from '../../../../emails/VerificationEmail';
+import sendVerificationEmail from '@/helpers/sendVerificationEmail';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: NextRequest) {
   const requestBody = await req.json();
   const headers = req.headers;
@@ -58,15 +57,10 @@ export async function POST(req: NextRequest) {
 
   //send Verification email
 
-  const verificationLink = `http://${host}/api/auth/verify-email/${token}`;
+  const verificationUrl = `http://${host}/api/auth/verify-email/${token}`;
 
   try {
-    await resend.emails.send({
-      to: user.email,
-      from: process.env.EMAIL_USER as string,
-      subject: 'Email Verification',
-      react: VerificationEmail({ verificationLink }),
-    });
+    await sendVerificationEmail({ to: user.email, verificationUrl });
     return NextResponse.json(
       { message: 'User created successfully.' },
       { status: 201 }

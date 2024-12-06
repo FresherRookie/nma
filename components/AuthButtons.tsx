@@ -22,8 +22,8 @@ const AuthButtons = () => {
         </>
       ) : (
         <>
-          <button onClick={() => router.push('/signin')}>Login</button>
-          <button onClick={() => router.push('/signup')}>Sign Up</button>
+          <button onClick={() => router.push('/auth/signin')}>Login</button>
+          <button onClick={() => router.push('/auth/signup')}>Sign Up</button>
         </>
       )}
     </div>

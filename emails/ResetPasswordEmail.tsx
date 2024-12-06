@@ -2,7 +2,7 @@ import {
   Html,
   Head,
   Font,
-  Preview,
+  Tailwind,
   Heading,
   Row,
   Section,
@@ -31,25 +31,30 @@ export default function ResetPasswordEmail({
           fontStyle="normal"
         />
       </Head>
-      <Preview>Here&apos;s your reset Password Link</Preview>
-      <Section>
-        <Row>
-          <Heading as="h2">Hello,</Heading>
-        </Row>
-        <Row>
-          <Text>
-            You requested to reset your password. Click the link below to reset
-            it:
-          </Text>
-          <Link href={resetLink}>Reset</Link>
-        </Row>
-
-        <Row>
-          <Text>
-            If you did not request this link, please ignore this email.
-          </Text>
-        </Row>
-      </Section>
+      <Tailwind>
+        <Section className="bg-gray-100 p-6 rounded-md shadow-md">
+          <Row className="mb-6">
+            <Heading as="h2" className="text-2xl font-bold text-gray-800">
+              Hello,
+            </Heading>
+          </Row>
+          <Row className="mb-4">
+            <Text className="text-lg text-gray-700">
+              Please use the provided link to reset your password
+            </Text>
+          </Row>
+          <Row className="mb-6">
+            <Link href={resetLink} className="text-blue-500 underline">
+              Reset Password
+            </Link>
+          </Row>
+          <Row>
+            <Text className="text-sm text-gray-600">
+              If you did not request this link, please ignore this email.
+            </Text>
+          </Row>
+        </Section>
+      </Tailwind>
     </Html>
   );
 }

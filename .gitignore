@@ -35,3 +35,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Ignore SSL certificate and key files
+key.pem
+cert.pem
+csr.pem
+# Other files to ignore 
+*.log 
+.DS_Store
